@@ -106,9 +106,13 @@ public class InterfazCrearDoctor extends JFrame {
         gbc.gridy = 3;
         datosPanel.add(cajaPassword, gbc);
 
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        datosPanel.add(lblGenero, gbc); // Agregar etiqueta de género
+
         gbc.gridx = 1;
         gbc.gridy = 4;
-        datosPanel.add(cajaGenero, gbc);
+        datosPanel.add(cajaGenero, gbc); // Agregar caja de género
 
         gbc.gridx = 0;
         gbc.gridy = 5;
@@ -152,7 +156,7 @@ public class InterfazCrearDoctor extends JFrame {
                 String codigoString = "D" + Integer.toString(codigo);
                 JOptionPane.showMessageDialog(null, "Cuenta creada con éxito, tu código es: " + codigo);
                 Doctor nuevoDoctor = new Doctor(codigoString,Password, Nombre, Apellido, Especialidad , Genero, Telefono, Edad);
-                InterfazAdministrador.addDoctor(nuevoDoctor);
+                InterfazAdministrador.addDoctor(nuevoDoctor, null);
                 Main.usuarios.add(nuevoDoctor);
                 dispose();
             }   

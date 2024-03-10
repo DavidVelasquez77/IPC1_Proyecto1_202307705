@@ -12,6 +12,7 @@ public class InterfazInicioSesion extends JFrame {
     private final Font TituloFont = new Font("Tahoma", Font.PLAIN, 20);
     public static JTextField cajaCodigo;
     private JTextField cajaPassword;
+    protected Doctor doctor;
 
     // Método para inicializar la ventana de inicio de sesión
     public void initialize() {
@@ -62,22 +63,25 @@ public class InterfazInicioSesion extends JFrame {
                     return;
                 }
 
+
                 // Verificar si el usuario es un doctor o paciente
                 for (Usuario usuario : Main.usuarios) {
                     if (usuario.getCodigo().equals(codigo) && usuario.getContrasena().equals(password)) {
                         JOptionPane.showMessageDialog(null, "Bienvenido " + usuario.getNombres() + " " + Usuario.getApellidos());
                         if (usuario instanceof Doctor) {
-                            ModuloDoctor interfazDoctor = new ModuloDoctor();
+                            ModuloDoctor interfazDoctor = new ModuloDoctor((Doctor) usuario);
+                            interfazDoctor.initialize(); // Asegúrate de llamar a initialize() antes de hacer la ventana visible
                             interfazDoctor.setVisible(true);
+                            InterfazInicioSesion.this.setVisible(false); // Oculta la ventana de inicio de sesión
                         } else {
                             ModuloPaciente interfazPaciente = new ModuloPaciente(usuario);
-                             interfazPaciente.initialize();
+                            interfazPaciente.initialize();
                             interfazPaciente.setVisible(true);
+                            InterfazInicioSesion.this.setVisible(false); // Oculta la ventana de inicio de sesión
                         }
                         return;
                     }
                 }
-
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
             }
         });

@@ -2,16 +2,21 @@
 
         import javax.swing.*;
         import javax.swing.table.DefaultTableModel;
-        import java.awt.*;
-        import java.util.List;
-        import java.awt.event.ActionEvent;
+
+
+
+import java.awt.*;
+
+import java.util.List;
+
+import java.awt.event.ActionEvent;
         import java.awt.event.ActionListener;
 
         public class InterfazAdministrador extends JFrame { 
             static DefaultTableModel modeloTablaDoctores = new DefaultTableModel();
             static DefaultTableModel modeloTablaUsuarios = new DefaultTableModel();
             static DefaultTableModel modeloTablaProducto = new DefaultTableModel();
-            private JTabbedPane tabbedPane;
+            private static JTabbedPane tabbedPane;
 
             public InterfazAdministrador(List<Doctor> doctores, List<Usuario> usuarios, List<Producto> productos){
                 initComponents(doctores, usuarios, productos);
@@ -222,7 +227,7 @@
                 for (Producto producto : productos) {
                     modeloTablaProducto.addRow(new Object[]{
                         producto.getCodigo(), // Agregar código
-                        producto.getNombres(), // Agregar nombres
+                        producto.getNombre(), // Agregar nombres
                         producto.getCantidad(), // Agregar cantidad
                         producto.getDescripcion(), // Agregar descripcion
                         producto.getPrecio(), // Agregar precio
@@ -296,7 +301,7 @@
                 getContentPane().add(tabbedPane);
             }
 
-            public static void addDoctor(Doctor doctor) {
+            public static void addDoctor(Doctor doctor, List<Doctor> doctores) {
                 modeloTablaDoctores.addRow(new Object[]{doctor.getCodigo(), doctor.getNombres(), Doctor.getApellidos(), doctor.getContrasena(), doctor.getEspecialidad(), doctor.getGenero(), doctor.getTelefono(), doctor.getEdad()});
             }
 
@@ -304,7 +309,7 @@
                 modeloTablaUsuarios.addRow(new Object[]{usuario.getCodigo(), usuario.getNombres(), Usuario.getApellidos(), usuario.getContrasena(), usuario.getGenero(), usuario.getEdad()});
             }
             public static void addProducto(Producto producto){
-                 modeloTablaProducto.addRow(new Object[]{producto.getCodigo(), producto.getNombres(), producto.getCantidad(), producto.getDescripcion(), producto.getPrecio()});
+                 modeloTablaProducto.addRow(new Object[]{producto.getCodigo(), producto.getNombre(), producto.getCantidad(), producto.getDescripcion(), producto.getPrecio()});
             }
 
             public void eliminarDoctorPorCodigo(String codigo) {
@@ -361,5 +366,6 @@
                 }
                 return null;
             }
+
 
         }

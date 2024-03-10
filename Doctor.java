@@ -1,13 +1,17 @@
 package src;
+import java.util.Objects;
 
 public class Doctor extends Usuario {
+    public static Doctor doctor;
     private String nombres;
     private static String apellidos;
     private String contrasena;
     private String especialidad;
+    private String codigo;
     private String genero;
     private String telefono;
     private String edad;
+    private String horario;
 
     public Doctor(String codigo, String contrasena, String nombres, String apellidos, String especialidad, String genero, String telefono, String edad) {
         super(codigo, contrasena, nombres, apellidos, genero, edad);
@@ -81,5 +85,43 @@ public class Doctor extends Usuario {
     public void setEdad(String edad) {
         this.edad = edad;
     }
+
+    public static void actualizarDoctorEnLista(Doctor doctor) {
+        for (int i = 0; i < InterfazAdministrador.modeloTablaDoctores.getRowCount(); i++) {
+            if (InterfazAdministrador.modeloTablaDoctores.getValueAt(i, 0).equals(doctor.getCodigo())) {
+                InterfazAdministrador.modeloTablaDoctores.setValueAt(doctor.getNombres(), i, 1);
+                InterfazAdministrador.modeloTablaDoctores.setValueAt(Doctor.getApellidos(), i, 2);
+                InterfazAdministrador.modeloTablaDoctores.setValueAt(doctor.getEspecialidad(), i, 4);
+                InterfazAdministrador.modeloTablaDoctores.setValueAt(doctor.getContrasena(), i, 3);
+                InterfazAdministrador.modeloTablaDoctores.setValueAt(doctor.getGenero(), i, 5);
+                InterfazAdministrador.modeloTablaDoctores.setValueAt(doctor.getTelefono(), i, 6);
+                InterfazAdministrador.modeloTablaDoctores.setValueAt(doctor.getEdad(), i, 7);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Doctor doctor = (Doctor) obj;
+        return Objects.equals(nombres, doctor.nombres);
+        // Compara otros campos si es necesario
+    }
+
+
+
+
+
+
+
+
+
+
 
 }

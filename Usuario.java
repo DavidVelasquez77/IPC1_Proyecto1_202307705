@@ -1,5 +1,6 @@
 package src;
 public class Usuario {
+    public static Usuario usuario;
     protected String codigo;
     protected String contrasena;
     protected String nombres;
@@ -68,10 +69,7 @@ public class Usuario {
         this.edad = edad;
     }
 
-    public static Usuario buscarPacientePorCodigo(String codigo2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPacientePorCodigo'");
-    }
+
 
     
 

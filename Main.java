@@ -2,14 +2,17 @@ package src;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 
 public class Main {
 
-    public static Administrador administrador = new Administrador("1", "1", "administrador");
+    public static Administrador administrador = new Administrador("202307705", "proyecto1IPC1", "administrador");
     public static List<Doctor> doctores = new ArrayList<>();
+    public static HashMap<String, ArrayList<Cita>> citasPorPaciente = new HashMap<>();
     public static List<Usuario> usuarios = new ArrayList<>();
     public static List<Producto> productos = new ArrayList<>();
     public static List<Cita> citas = new ArrayList<>();
+    public static List<Horario> horarios = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -63,7 +66,7 @@ public class Main {
     public static void actualizarProductoEnLista(Producto producto) {
         for (int i = 0; i < InterfazAdministrador.modeloTablaProducto.getRowCount(); i++) {
             if (InterfazAdministrador.modeloTablaProducto.getValueAt(i, 0).equals(producto.getCodigo())) {
-                InterfazAdministrador.modeloTablaProducto.setValueAt(producto.getNombres(), i, 1);
+                InterfazAdministrador.modeloTablaProducto.setValueAt(producto.getNombre(), i, 1);
                 InterfazAdministrador.modeloTablaProducto.setValueAt(producto.getCantidad(), i, 2);
                 InterfazAdministrador.modeloTablaProducto.setValueAt(producto.getDescripcion(), i, 3);
                 InterfazAdministrador.modeloTablaProducto.setValueAt(producto.getPrecio(), i, 4);

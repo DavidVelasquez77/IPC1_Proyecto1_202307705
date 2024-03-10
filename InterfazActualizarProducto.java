@@ -149,7 +149,7 @@ public class InterfazActualizarProducto extends JFrame {
       setVisible(true);
 
       // Llenar los campos de texto con los datos del doctor
-      cajaNombre.setText(producto.getNombres());
+      cajaNombre.setText(producto.getNombre());
       cajaCantidad.setText(producto.getCantidad());
       cajaDescripcion.setText(producto.getDescripcion());
       cajaPrecio.setText(producto.getPrecio());
@@ -163,7 +163,7 @@ public class InterfazActualizarProducto extends JFrame {
       String Precio = cajaPrecio.getText();
 
       // Actualizar los datos del doctor
-      producto.setNombres(Nombre);
+      producto.setNombre(Nombre);
       producto.setCantidad(Cantidad);
       producto.setDescripcion(Descripcion);
       producto.setPrecio(Precio);
